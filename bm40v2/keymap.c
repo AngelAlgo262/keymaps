@@ -138,21 +138,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Adjust (Lower - Raise)
  *                      v------------------------RGB CONTROL--------------------v
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|Debug | RGB  |RGBMOD| HUE- | HUE- | SAT- | SAT- |BRGTH-|BRGTH-|  Del |
+ * |BRGTH+|Mode+ | Hue+ | Sat+ |Speed+|BrScr+| NA   |ClickL|Mouse↑|ClickR|  NA  |Reset |
  * |-----------------------------------------------------------------------------------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |BRGTH-|Mode- | Hue- | Sat- |Speed-|BrScr-| NA   |Mouse←|Mouse↓|Mouse→|  NA  |Mute  |
  * |-----------------------------------------------------------------------------------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * | NA   | NA   | NA   |  NA  |  NA  |  NA  | NA   |  NA  |  NA  |  NA  |  NA  |Vol-  |
  * |-----------------------------------------------------------------------------------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * | RGB  | NA   | NA   |  NA  |  NA  |     NA      |  NA  |  NA  |  NA  |  NA  |Vol+  |
  * `-----------------------------------------------------------------------------------'
  */
-[_ADJUST] = LAYOUT_planck_mit(
-    _______, QK_BOOT, DB_TOGG, RM_TOGG, RM_NEXT, RM_HUEU, RM_HUED, RM_SATU, RM_SATD,  RM_VALU, RM_VALD, KC_DEL ,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
-)
+[_ADJUST] = LAYOUT_ortho_4x12(
+    RGB_VAI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_SPI, KC_PGUP,   NA, KC_BTN1, KC_MS_U, KC_BTN2, NA, QK_BOOT,
+    RGB_VAD, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_SPD, KC_PGDN,   NA, KC_MS_L, KC_MS_D, KC_MS_R, NA, KC_MUTE,
+    NA,      NA,      NA,      NA,      NA,      NA,        NA, NA,      NA,      NA,      NA, KC_VOLD,
+    RGB_TOG, NA,      NA,      NA,      NA,      NA,        NA, NA,      NA,      NA,      NA, KC_VOLU
+);
 
 };
 
