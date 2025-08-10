@@ -19,12 +19,47 @@ enum layers {
   _QWERTY,
   _LOWER,
   _RAISE,
-  _ADJUST
+  _ADJUST,
+  _ACENTOS
+};
+
+enum custom_keycodes {
+  A_ACUTE = SAFE_RANGE,
+  E_ACUTE,
+  I_ACUTE,
+  O_ACUTE,
+  U_ACUTE,
+  N_TILDE
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define NA XXXXXXX
+#define  ACENTOS LT(_ACENTOS, KC_TAB)
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case A_ACUTE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_QUOT) "a");
+            return false;
+        case E_ACUTE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_QUOT) "e");
+            return false;
+        case I_ACUTE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_QUOT) "i");
+            return false;
+        case O_ACUTE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_QUOT) "o");
+            return false;
+        case U_ACUTE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_QUOT) "u");
+            return false;
+        case N_TILDE:
+            if (record->event.pressed) SEND_STRING(SS_TAP(X_RALT) "n");
+            return false;
+    }
+    return true;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -40,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-    KC_LCTL, KC_MENU, KC_LGUI, KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_DEL,  KC_RCTL, KC_HOME, KC_END
+    KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    ACENTOS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
+    KC_LCTL,  KC_MENU, KC_LGUI, KC_LALT, LOWER,       KC_SPC,       RAISE,   KC_DEL,  KC_RCTL, KC_HOME, KC_END
 ),
 
 /* Lower
@@ -81,6 +116,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     NA,      NA,    KC_F3,   KC_F9,   NA,      NA,      NA,      KC_7,    KC_8,    KC_9,    KC_SLSH, KC_EQL,
     KC_CAPS, NA,    NA,      NA,      _______,    _______,       _______, KC_0,    KC_DOT,  KC_DEL,  KC_MINS
 ),
+
+/* Acentos
+* ,-----------------------------------------------------------------------------------.
+ * | NA   |  NA   |  NA  |E_ACUTE|  NA |  NA  |  NA  |U_ACUTE|I_ACUTE|O_ACUTE|NA | NA  |
+ * |-----------------------------------------------------------------------------------|
+ * | NA   |A_ACUTE|  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  |  NA  | NA   | NA  |
+ * |-----------------------------------------------------------------------------------|
+ * | NA   |  NA  |  NA   |  NA  |  NA  |  NA  |N_TILDE| NA  |  NA  |  NA  | NA   | NA  |
+ * |-----------------------------------------------------------------------------------|
+ * | NA   |  NA  |  NA   |  NA  |Lower |    Space    |Raise |  NA  |  NA |  NA   | NA  |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_ACENTOS] = LAYOUT_ortho_4x12(
+    NA, NA,      NA, E_ACUTE, NA,      NA,    NA,      U_ACUTE,   I_ACUTE, O_ACUTE, NA, NA,
+    NA, A_ACUTE, NA, NA,      NA,      NA,    NA,      NA,        NA,      NA,      NA, NA,
+    NA, NA,      NA, NA,      NA,      NA,    N_TILDE, NA,        NA,      NA,      NA, NA,
+    NA, NA,      NA, NA,      _______,   _______,      _______,   NA,      NA,      NA, NA,
+);
 
 /* Adjust (Lower - Raise)
  *                      v------------------------RGB CONTROL--------------------v
