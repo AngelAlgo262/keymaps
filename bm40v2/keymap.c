@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | CTRL | MENU | GUI  | Alt  |Lower |    Space    |Raise | Del  | CTRL | Home | End  |
  * `-----------------------------------------------------------------------------------'
  */
-[_QWERTY] = LAYOUT_ortho_4x12(
+[_QWERTY] = LAYOUT_planck_mit(
     KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     ACENTOS,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
@@ -92,12 +92,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | NA   |   _  |   <  |   >  |Lower |    Space    |Raise |  NA  |  NA  |  NA  | NA   |
  * `-----------------------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT_ortho_4x12(
+[_LOWER] = LAYOUT_planck_mit(
     KC_PIPE, KC_PERC, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV,  NA,      NA,       KC_UP,   NA,      NA,      KC_BSPC,
     KC_HASH, KC_EQL,  KC_DLR,  KC_LPRN, KC_RPRN, KC_PSCR, NA,      KC_LEFT,  KC_DOWN, KC_RGHT, NA,      KC_ASTR,
     KC_TILD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_AMPR, NA,      NA,       NA,      NA,      NA,      NA,
-    NA,      KC_UNDS, KC_LT,   KC_GT,   _______,    _______,       _______,  NA,      NA,      NA,      NA,
-)
+    NA,      KC_UNDS, KC_LT,   KC_GT,   _______,    _______,       _______,  NA,      NA,      NA,      NA
+),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |Caps  |  NA  |  NA  |  NA  |Lower |   Space     |Raise |  0)  |  .>  | Del  |  -   |
  * `-----------------------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT_ortho_4x12(
+[_RAISE] = LAYOUT_planck_mit(
     NA,      NA,    KC_F1,   KC_F4,   KC_F11,  KC_PGUP, KC_PGDN, KC_1,    KC_2,    KC_3,    KC_PLUS, KC_BSPC,
     KC_LSFT, NA,    KC_F2,   KC_F5,   KC_F12,  NA,      NA,      KC_4,    KC_5,    KC_6,    KC_ASTR, KC_ENT,
     NA,      NA,    KC_F3,   KC_F9,   NA,      NA,      NA,      KC_7,    KC_8,    KC_9,    KC_SLSH, KC_EQL,
@@ -128,12 +128,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | NA   |  NA  |  NA   |  NA  |Lower |    Space    |Raise |  NA  |  NA |  NA   | NA  |
  * `-----------------------------------------------------------------------------------'
  */
-[_ACENTOS] = LAYOUT_ortho_4x12(
+[_ACENTOS] = LAYOUT_planck_mit(
     NA, NA,      NA, E_ACUTE, NA,      NA,    NA,      U_ACUTE,   I_ACUTE, O_ACUTE, NA, NA,
     NA, A_ACUTE, NA, NA,      NA,      NA,    NA,      NA,        NA,      NA,      NA, NA,
     NA, NA,      NA, NA,      NA,      NA,    N_TILDE, NA,        NA,      NA,      NA, NA,
-    NA, NA,      NA, NA,      _______,   _______,      _______,   NA,      NA,      NA, NA,
-);
+    NA, NA,      NA, NA,      _______,   _______,      _______,   NA,      NA,      NA, NA
+),
 
 /* Adjust (Lower - Raise)
  *                      v------------------------RGB CONTROL--------------------v
@@ -147,12 +147,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | RGB  | NA   | NA   |  NA  |  NA  |     NA      |  NA  |  NA  |  NA  |  NA  |Vol+  |
  * `-----------------------------------------------------------------------------------'
  */
-[_ADJUST] = LAYOUT_ortho_4x12(
+[_ADJUST] = LAYOUT_planck_mit(
     RGB_VAI, RGB_MOD, RGB_HUI, RGB_SAI, RGB_SPI, KC_PGUP,   NA, KC_BTN1, KC_MS_U, KC_BTN2, NA, QK_BOOT,
     RGB_VAD, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_SPD, KC_PGDN,   NA, KC_MS_L, KC_MS_D, KC_MS_R, NA, KC_MUTE,
     NA,      NA,      NA,      NA,      NA,      NA,        NA, NA,      NA,      NA,      NA, KC_VOLD,
-    RGB_TOG, NA,      NA,      NA,      NA,      NA,        NA, NA,      NA,      NA,      NA, KC_VOLU
-);
+    RGB_TOG, NA,      NA,      NA,      NA,      NA,        NA, NA,      NA,      NA,          KC_VOLU
+)
 
 };
 
