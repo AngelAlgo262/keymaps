@@ -138,13 +138,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
         {
             if (get_mods() & MOD_MASK_SHIFT)
             {
-                // Con Shift A
-                SEND_STRING(SS_TAP(X_QUOT) "A");
+                // Con Shift Á
+                SEND_STRING("Á");
             }
             else
             {
                 // Sin shift a
-                SEND_STRING(SS_TAP(X_QUOT) "a");
+                SEND_STRING("á");
             }
         }
         return false;
@@ -153,13 +153,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
         {
             if (get_mods() & MOD_MASK_SHIFT)
             {
-                // Con Shift E
-                SEND_STRING(SS_TAP(X_QUOT) "E");
+                // Con Shift É
+                SEND_STRING(SS_TAP(X_QUOT) "É");
             }
             else
             {
                 // Sin shift e
-                SEND_STRING(SS_TAP(X_QUOT) "e");
+                SEND_STRING(SS_TAP(X_QUOT) "é");
             }
         }
         return false;
@@ -168,13 +168,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
         {
             if (get_mods() & MOD_MASK_SHIFT)
             {
-                // Con Shift I
-                SEND_STRING(SS_TAP(X_QUOT) "I");
+                // Con Shift Í
+                SEND_STRING("Í");
             }
             else
             {
                 // Sin shift i
-                SEND_STRING(SS_TAP(X_QUOT) "i");
+                SEND_STRING("í");
             }
         }
         return false;
@@ -184,12 +184,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (get_mods() & MOD_MASK_SHIFT)
             {
                 // Con Shift O
-                SEND_STRING(SS_TAP(X_QUOT) "O");
+                SEND_STRING("Ó");
             }
             else
             {
                 // Sin shift o
-                SEND_STRING(SS_TAP(X_QUOT) "o");
+                SEND_STRING("ó");
             }
         }
         return false;
@@ -199,12 +199,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (get_mods() & MOD_MASK_SHIFT)
             {
                 // Con Shift U
-                SEND_STRING(SS_TAP(X_QUOT) "U");
+                SEND_STRING("U");
             }
             else
             {
                 // Sin shift u
-                SEND_STRING(SS_TAP(X_QUOT) "u");
+                SEND_STRING("u");
             }
         }
         return false;
