@@ -11,22 +11,101 @@
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+/* Layer 0: QWERTY
+ * ,-----------------------------------------------------------------------------------.
+ * | Esc  |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   | Enter|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   |  /   |  "   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Ctrl | Menu | Alt  | GUI  |Lower |    Space    |Raise | Del  | Ctrl | Home | End  |
+ * `-----------------------------------------------------------------------------------'
+ */
     [0] = LAYOUT_ortho_4x12_1x2uC
     (
-        KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, 
-        KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT, 
+        KC_ESC,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, 
+        KC_TAB,  KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT, 
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT, 
         KC_LCTL, KC_APP, KC_LALT, KC_LGUI, TL_LOWR, KC_SPC, TL_UPPR, KC_DEL, KC_RCTL, KC_HOME, KC_END
     ),
     
-    
-    
-    
-    
-    [1] = LAYOUT_ortho_4x12_1x2uC(KC_PIPE, KC_PERC, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_BSPC, KC_HASH, KC_PEQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, KC_TILD, KC_EXLM, KC_AT, KC_LCBR, KC_RCBR, KC_AMPR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_CIRC, KC_UNDS, KC_LT, KC_GT, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
-    [2] = LAYOUT_ortho_4x12_1x2uC(KC_NO, KC_NO, KC_F1, KC_F4, KC_F11, KC_PGDN, KC_PGUP, KC_1, KC_2, KC_3, KC_PPLS, KC_BSPC, KC_LSFT, KC_NO, KC_F2, KC_F5, KC_F12, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_PAST, KC_ENT, KC_NO, KC_NO, KC_F3, KC_F9, KC_NO, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_PSLS, KC_PEQL, KC_CAPS, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_DOT, KC_NO, KC_NO),
-    [3] = LAYOUT_ortho_4x12_1x2uC(LM_VALU, RM_NEXT, RM_HUEU, RM_SATU, RM_SPDU, KC_BRID, KC_NO, MS_BTN1, MS_UP, MS_BTN2, KC_NO, KC_NO, LM_VALD, RM_PREV, RM_HUED, RM_SATD, RM_SPDD, KC_BRIU, KC_NO, MS_LEFT, MS_DOWN, MS_RGHT, KC_NO, KC_MUTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLD, UG_TOGG, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_VOLU),
-    [4] = LAYOUT_ortho_4x12_1x2uC(KC_NO, KC_NO, KC_NO, KC_E, KC_NO, KC_NO, KC_NO, KC_N, KC_I, KC_O, KC_NO, KC_NO, KC_NO, KC_A, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_N, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO)
+/* Layer 1: LOWER (símbolos / dirección)
+ * ,-----------------------------------------------------------------------------------.
+ * |   |  |   %  |   \  |   [  |   ]  |   `  |      |      |  ↑   |      |      | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  #   |  =   |  $   |  (   |  )   | PrtSc|      |  ←   |  ↓   |  →   |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  ~   |  !   |  @   |  {   |  }   |  &   |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  ^   |  _   |  <   |  >   |Lower |   Space     |Raise |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */  
+    [1] = LAYOUT_ortho_4x12_1x2uC
+    (
+        KC_PIPE, KC_PERC, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_BSPC, 
+        KC_HASH, KC_PEQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, 
+        KC_TILD, KC_EXLM, KC_AT, KC_LCBR, KC_RCBR, KC_AMPR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_CIRC, KC_UNDS, KC_LT, KC_GT, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
+    ),
+
+/* Layer 2: RAISE (números / funciones)
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |  F1  |  F4  | F11  | PgDn | PgUp |  1   |  2   |  3   |  +   | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Shift |      |  F2  |  F5  | F12  |      |      |  4   |  5   |  6   |  *   | Enter|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |  F3  |  F9  |      |      |      |  7   |  8   |  9   |  /   |  =   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Caps |      |      |      |Lower |   Space     |Raise |  0   |  .   | Del  |  -   |
+ * `-----------------------------------------------------------------------------------'
+ */    
+    [2] = LAYOUT_ortho_4x12_1x2uC
+    (
+        KC_NO, KC_NO, KC_F1, KC_F4, KC_F11, KC_PGDN, KC_PGUP, KC_1, KC_2, KC_3, KC_PPLS, KC_BSPC, 
+        KC_LSFT, KC_NO, KC_F2, KC_F5, KC_F12, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_PAST, KC_ENT, 
+        KC_NO, KC_NO, KC_F3, KC_F9, KC_NO, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_PSLS, KC_PEQL, 
+        KC_CAPS, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_DOT, KC_NO, KC_NO
+    ),
+
+/* Layer 3: ADJUST (RGB / Mouse)
+ * ,-----------------------------------------------------------------------------------.
+ * |Br+   |Mode+ | Hue+ | Sat+ |Spd+  | Br-  |      |ClickL|Mouse↑|ClickR|      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Br-   |Mode- | Hue- | Sat- |Spd-  | Br+  |      |Mouse←|Mouse↓|Mouse→|      | Mute |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |Vol-  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | RGB  |      |      |      |Lower |   Space     |Raise |      |      |      |Vol+  |
+ * `-----------------------------------------------------------------------------------'
+ */
+    [3] = LAYOUT_ortho_4x12_1x2uC
+    (
+        RM_VALU, RM_NEXT, RM_HUEU, RM_SATU, RM_SPDU, KC_BRID, KC_NO, MS_BTN1, MS_UP, MS_BTN2, KC_NO, KC_NO, 
+        RM_VALD, RM_PREV, RM_HUED, RM_SATD, RM_SPDD, KC_BRIU, KC_NO, MS_LEFT, MS_DOWN, MS_RGHT, KC_NO, KC_MUTE, 
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLD, 
+        UG_TOGG, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_VOLU
+    ),
+
+/* Layer 4: ACENTOS (vocales y ñ)
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |  E   |      |      |      |  U   |  I   |  O   |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |  A   |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |  Ñ   |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */    
+    [4] = LAYOUT_ortho_4x12_1x2uC
+    (
+        KC_NO, KC_NO, KC_NO, KC_E, KC_NO, KC_NO, KC_NO, KC_U, KC_I, KC_O, KC_NO, KC_NO, 
+        KC_NO, KC_A, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_N, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
+    )
 };
 
 
