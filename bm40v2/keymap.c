@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_F1, KC_F4, KC_F11, KC_PGDN, KC_PGUP, KC_1, KC_2, KC_3, KC_PPLS, KC_BSPC, 
         KC_LSFT, KC_NO, KC_F2, KC_F5, KC_F12, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_PAST, KC_ENT, 
         KC_NO, KC_NO, KC_F3, KC_F9, KC_NO, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_PSLS, KC_PEQL, 
-        KC_CAPS, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_DOT, KC_NO, KC_NO
+        KC_CAPS, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_DOT, KC_DEL, KC_PMNS
     ),
 
 /* Layer 3: ADJUST (RGB / Mouse)
@@ -154,12 +154,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
             if (get_mods() & MOD_MASK_SHIFT)
             {
                 // Con Shift É
-                SEND_STRING(SS_TAP(X_QUOT) "É");
+                SEND_STRING("É");
             }
             else
             {
                 // Sin shift e
-                SEND_STRING(SS_TAP(X_QUOT) "é");
+                SEND_STRING("é");
             }
         }
         return false;

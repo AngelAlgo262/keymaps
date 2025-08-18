@@ -26,5 +26,6 @@
         "SLSH",
         "TILD",
         "UNDS"
-    ]
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
 }
