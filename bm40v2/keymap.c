@@ -55,17 +55,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  #   |  =   |  $   |  (   |  )   | PrtSc|      |  ←   |  ↓   |  →   |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ~   |  !   |  @   |  {   |  }   |  &   |      |      |      |      |      |      |
+ * |Shift |  !   |  @   |  {   |  }   |  &   |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ^   |  _   |  <   |  >   |Lower |   Space     |Raise |      |      |      |      |
+ * |  ^   |  _   |  <   |  >   |Lower |   Space     |Raise |      |      |      |  ~   |
  * `-----------------------------------------------------------------------------------'
  */  
     [1] = LAYOUT_ortho_4x12_1x2uC
     (
         KC_PIPE, KC_PERC, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_BSPC, 
         KC_HASH, KC_PEQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, 
-        KC_TILD, KC_EXLM, KC_AT, KC_LCBR, KC_RCBR, KC_AMPR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_CIRC, KC_UNDS, KC_LT, KC_GT, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
+        KC_LSFT, KC_EXLM, KC_AT, KC_LCBR, KC_RCBR, KC_AMPR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_CIRC, KC_UNDS, KC_LT, KC_GT, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_TILD
     ),
 
 /* Layer 2: RAISE (números / funciones)
