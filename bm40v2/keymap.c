@@ -1,8 +1,8 @@
 #include QMK_KEYBOARD_H
 #if __has_include("keymap.h")
-#    include "keymap.h"
 #endif
-
+#include "quantum.h"
+#include "send_string.h"
 
 /* THIS FILE WAS GENERATED!
  *
@@ -17,7 +17,8 @@
  * 4 → Acentos (á, é, í, ó, ú, ñ)
  */
 
-enum custom_keycodes {
+enum custom_keycodes
+{
     A_ACUTE = SAFE_RANGE,
     E_ACUTE,
     I_ACUTE,
@@ -25,210 +26,182 @@ enum custom_keycodes {
     U_ACUTE,
     N_TILDE
 };
-//LT(layer, key) Layer Tap espera una capa y una tecla
-#define ACENTOS LT(4, KC_TAB) //Mantener Tab para acceder a la capa
+// LT(layer, key) Layer Tap espera una capa y una tecla
+#define ACENTOS LT(4, KC_TAB) // Mantener Tab para acceder a la capa
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Layer 0: QWERTY
- * ,-----------------------------------------------------------------------------------.
- * | Esc  |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   | Enter|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   |  /   |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  | Ctrl | Home | End  |
- * `-----------------------------------------------------------------------------------'
- */
-    [0] = LAYOUT_ortho_4x12_1x2uC
-    (
-        KC_ESC,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, 
-        ACENTOS,  KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT, 
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT, 
-        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, TL_UPPR, KC_DEL, KC_RCTL, KC_HOME, KC_END
-    ),
-    
-/* Layer 1: LOWER (símbolos / dirección)
- * ,-----------------------------------------------------------------------------------.
- * |   |  |   %  |   \  |   [  |   ]  |   `  |      |      |  ↑   |      |      | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  #   |  =   |  $   |  (   |  )   | PrtSc|      |  ←   |  ↓   |  →   |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |  !   |  @   |  {   |  }   |  &   |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ^   |  _   |  <   |  >   |Lower |   Space     |Raise |      |      |      |  ~   |
- * `-----------------------------------------------------------------------------------'
- */  
-    [1] = LAYOUT_ortho_4x12_1x2uC
-    (
-        KC_PIPE, KC_PERC, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_BSPC, 
-        KC_HASH, KC_PEQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, 
-        KC_LSFT, KC_EXLM, KC_AT, KC_LCBR, KC_RCBR, KC_AMPR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_CIRC, KC_UNDS, KC_LT, KC_GT, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_TILD
-    ),
+    /* Layer 0: QWERTY
+     * ,-----------------------------------------------------------------------------------.
+     * | Esc  |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | Bksp |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   | Enter|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   |  /   |  "   |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  |AltGr | Home | End  |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [0] = LAYOUT_ortho_4x12_1x2uC(
+        KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
+        ACENTOS, KC_A, KC_S, KC_D, LT(5, KC_F), KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,
+        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, TL_UPPR, KC_DEL, KC_RALT, KC_HOME, KC_END),
 
-/* Layer 2: RAISE (números / funciones)
- * ,-----------------------------------------------------------------------------------.
- * |      |      |  F1  |  F4  | F11  | PgDn | PgUp |  1   |  2   |  3   |  +   | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |      |  F2  |  F5  | F12  |      |      |  4   |  5   |  6   |  *   | Enter|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |  F3  |  F9  |      |      |      |  7   |  8   |  9   |  /   |  =   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Caps |      |      |      |Lower |   Space     |Raise |  0   |  .   | Del  |  -   |
- * `-----------------------------------------------------------------------------------'
- */    
-    [2] = LAYOUT_ortho_4x12_1x2uC
-    (
-        KC_NO, KC_NO, KC_F1, KC_F4, KC_F11, KC_PGDN, KC_PGUP, KC_1, KC_2, KC_3, KC_PPLS, KC_BSPC, 
-        KC_LSFT, KC_NO, KC_F2, KC_F5, KC_F12, KC_NO, KC_NO, KC_4, KC_5, KC_6, KC_PAST, KC_ENT, 
-        KC_NO, KC_NO, KC_F3, KC_F9, KC_NO, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_PSLS, KC_PEQL, 
-        KC_CAPS, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_DOT, KC_DEL, KC_PMNS
-    ),
+    /* Layer 1: LOWER (símbolos)
+     * ,-----------------------------------------------------------------------------------.
+     * |      |  /   |   \  |  [   |  ]   |   `  |   ^  |   -  |  _   |   ~  | Del  | Bksp |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |Caps  |  =   |  $   |  (   |  )   | PrtSc|  %   |  <   |  >   |   *  |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |  #   |  @   |  {   |  }   |      |      |  &   |  |   |   !  |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [1] = LAYOUT_ortho_4x12_1x2uC(
+        KC_NO, KC_SLSH, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_CIRC, KC_MINS, KC_UNDS, KC_TILD, KC_DEL, KC_BSPC,
+        KC_CAPS, KC_EQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_PERC, KC_LT, KC_GT, KC_ASTR, KC_NO, KC_NO,
+        KC_NO, KC_HASH, KC_AT, KC_LCBR, KC_RCBR, KC_NO, KC_NO, KC_AMPR, KC_PIPE, KC_EXLM, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
 
-/* Layer 3: ADJUST (RGB / Mouse)
- * ,-----------------------------------------------------------------------------------.
- * |Br+   |Mode+ | Hue+ | Sat+ |Spd+  | Br-  |      |ClickL|Mouse↑|ClickR|      | Mute |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Br-   |Mode- | Hue- | Sat- |Spd-  | Br+  |      |Mouse←|Mouse↓|Mouse→|      |Vol-  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |Vol+  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | RGB  |      |      |      |Lower |   Space     |Raise |      |      |Reset |      |
- * `-----------------------------------------------------------------------------------'
- */
-    [3] = LAYOUT_ortho_4x12_1x2uC
-    (
-        RM_VALU, RM_NEXT, RM_HUEU, RM_SATU, RM_SPDU, KC_BRID, KC_NO, MS_BTN1, MS_UP, MS_BTN2, KC_NO, KC_MUTE, 
-        RM_VALD, RM_PREV, RM_HUED, RM_SATD, RM_SPDD, KC_BRIU, KC_NO, MS_LEFT, MS_DOWN, MS_RGHT, KC_NO, KC_VOLD, 
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLU, 
-        UG_TOGG, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, QK_BOOT, KC_NO
-    ),
+    /* Layer 2: RAISE (números / funciones)
+     * ,-----------------------------------------------------------------------------------.
+     * |      |      |  F3  |  F4  | F9   |   .  |   +  |  1   |  2   |  3   |  -   | Bksp |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |  F2  |  F5  | F12  |   ,  |   :  |  4   |  5   |  6   |  * | Enter|
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |  F1  |  F11 |      |      |   /  |  7   |  8   |  9   |  =   | Del  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |Lower |   Space     |Raise |  0   |      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [2] = LAYOUT_ortho_4x12_1x2uC(
+        KC_NO, KC_NO, KC_F3, KC_F4, KC_F9, KC_DOT, KC_PLUS, KC_1, KC_2, KC_3, KC_MINS, KC_BSPC,
+        KC_NO, KC_NO, KC_F2, KC_F5, KC_F12, KC_COMM, KC_COLN, KC_4, KC_5, KC_6, KC_ASTR, KC_ENT,
+        KC_NO, KC_NO, KC_F1, KC_F11, KC_NO, KC_NO, KC_SLSH, KC_7, KC_8, KC_9, KC_EQL, KC_DEL,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_0, KC_NO, KC_NO, KC_NO),
 
-/* Layer 4: ACENTOS (vocales y ñ)
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |  E   |      |      |      |  U   |  I   |  O   |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  A   |      |      |      |      |      |      |      |      |      |Shift |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |  Ñ   |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */    
-    [4] = LAYOUT_ortho_4x12_1x2uC
-    (
-        KC_NO, KC_NO, KC_NO, E_ACUTE, KC_NO, KC_NO, KC_NO, U_ACUTE, I_ACUTE, O_ACUTE, KC_NO, KC_NO, 
-        KC_NO, A_ACUTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_RSFT, 
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, N_TILDE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
-    ),
+    /* Layer 3: ADJUST (RGB / Mouse)
+     * ,-----------------------------------------------------------------------------------.
+     * |Br+   |Mode+ | Hue+ | Sat+ |Spd+  | Br-  |      |ClickL|Mouse↑|ClickR|      | Mute |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |Br-   |Mode- | Hue- | Sat- |Spd-  | Br+  |      |Mouse←|Mouse↓|Mouse→|      |Vol-  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |      |      |      |      |      |      |      |Vol+  |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * | RGB  |      |      |      |Lower |   Space     |Raise |      |      |Reset |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [3] = LAYOUT_ortho_4x12_1x2uC(
+        RM_VALU, RM_NEXT, RM_HUEU, RM_SATU, RM_SPDU, KC_BRID, KC_NO, MS_BTN1, MS_UP, MS_BTN2, KC_NO, KC_MUTE,
+        RM_VALD, RM_PREV, RM_HUED, RM_SATD, RM_SPDD, KC_BRIU, KC_NO, MS_LEFT, MS_DOWN, MS_RGHT, KC_NO, KC_VOLD,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLU,
+        UG_TOGG, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, QK_BOOT, KC_NO),
+
+    /* Layer 4: ACENTOS (vocales y ñ)
+     * ,-----------------------------------------------------------------------------------.
+     * |      |      |      |  E   |      |      |      |  U   |  I   |  O   |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |  A   |      |      |      |      |      |      |      |      |      |Shift |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |      |      |  Ñ   |      |      |      |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [4] = LAYOUT_ortho_4x12_1x2uC(
+        KC_NO, KC_NO, KC_NO, E_ACUTE, KC_NO, KC_NO, KC_NO, U_ACUTE, I_ACUTE, O_ACUTE, KC_NO, KC_NO,
+        KC_NO, A_ACUTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_RSFT,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, N_TILDE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
+    /* Layer 5: Direccion
+     * ,-----------------------------------------------------------------------------------.
+     * |      |      |PgUp  | Home |      |      |PgDn  | End  | Top  |      |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |Shift | Ctrl |  F   |      |      | Left | Down |Right |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |      |      |      |      |      |      |      |      |
+     * |------+------+------+------+------+------+------+------+------+------+------+------|
+     * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
+     * `-----------------------------------------------------------------------------------'
+     */
+    [5] = LAYOUT_ortho_4x12_1x2uC(
+        KC_NO, KC_NO, KC_PGUP, KC_HOME, KC_NO, KC_NO, KC_PGDN, KC_END, KC_UP, KC_NO, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
 };
 /* --- Acentos --- */
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-    if (!record->event.pressed)
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) {
         return true;
-
-    switch (keycode)
-    {
-    case A_ACUTE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift Á
-                SEND_STRING("Á");
-            }
-            else
-            {
-                // Sin shift a
-                SEND_STRING("á");
-            }
-        }
-        return false;
-    case E_ACUTE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift É
-                SEND_STRING("É");
-            }
-            else
-            {
-                // Sin shift e
-                SEND_STRING("é");
-            }
-        }
-        return false;
-    case I_ACUTE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift Í
-                SEND_STRING("Í");
-            }
-            else
-            {
-                // Sin shift i
-                SEND_STRING("í");
-            }
-        }
-        return false;
-    case O_ACUTE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift O
-                SEND_STRING("Ó");
-            }
-            else
-            {
-                // Sin shift o
-                SEND_STRING("ó");
-            }
-        }
-        return false;
-    case U_ACUTE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift U
-                SEND_STRING("U");
-            }
-            else
-            {
-                // Sin shift u
-                SEND_STRING("u");
-            }
-        }
-        return false;
-    case N_TILDE:
-        if (record->event.pressed)
-        {
-            if (get_mods() & MOD_MASK_SHIFT)
-            {
-                // Con Shift Ñ
-                SEND_STRING("Ñ");
-            }
-            else
-            {
-                // Sin shift ñ
-                SEND_STRING("ñ");
-            }
-        }
-        return false;
     }
+
+    switch (keycode) {
+        case A_ACUTE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // Á (U+00C1)
+                send_unicode(0x00C1);
+            } else {
+                // á (U+00E1)
+                send_unicode(0x00E1);
+            }
+            return false;
+        
+        case E_ACUTE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // É (U+00C9)
+                send_unicode(0x00C9);
+            } else {
+                // é (U+00E9)
+                send_unicode(0x00E9);
+            }
+            return false;
+        
+        case I_ACUTE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // Í (U+00CD)
+                send_unicode(0x00CD);
+            } else {
+                // í (U+00ED)
+                send_unicode(0x00ED);
+            }
+            return false;
+        
+        case O_ACUTE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // Ó (U+00D3)
+                send_unicode(0x00D3);
+            } else {
+                // ó (U+00F3)
+                send_unicode(0x00F3);
+            }
+            return false;
+        
+        case U_ACUTE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // Ú (U+00DA)
+                send_unicode(0x00DA);
+            } else {
+                // ú (U+00FA)
+                send_unicode(0x00FA);
+            }
+            return false;
+        
+        case N_TILDE:
+            if (get_mods() & MOD_MASK_SHIFT) {
+                // Ñ (U+00D1)
+                send_unicode(0x00D1);
+            } else {
+                // ñ (U+00F1)
+                send_unicode(0x00F1);
+            }
+            return false;
+    }
+
     return true;
 }
 
 #ifdef OTHER_KEYMAP_C
-#    include OTHER_KEYMAP_C
 #endif // OTHER_KEYMAP_C
-
-
