@@ -35,24 +35,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * | Esc  |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   | Enter|
+     * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   |  "   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   |  /   |  "   |
+     * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   | Top  |  /   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  |AltGr | Home | End  |
+     * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  |Left  | Down |Rigth |
      * `-----------------------------------------------------------------------------------'
      */
     [0] = LAYOUT_ortho_4x12_1x2uC(
         KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-        ACENTOS, KC_A, KC_S, KC_D, LT(5, KC_F), KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,
-        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, TL_UPPR, KC_DEL, KC_RALT, KC_HOME, KC_END),
+        ACENTOS, KC_A, KC_S, KC_D, LT(5, KC_F), KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_UP, KC_SLSH,
+        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, LT(2, KC_ENT), KC_DEL, KC_LEFT, KC_DOWN, KC_RGHT),
 
     /* Layer 1: LOWER (símbolos)
      * ,-----------------------------------------------------------------------------------.
      * |      |  /   |   \  |  [   |  ]   |   `  |   ^  |   -  |  _   |   ~  | Del  | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |Caps  |  =   |  $   |  (   |  )   | PrtSc|  %   |  <   |  >   |   *  |      |      |
+     * |Caps  |  =   |  $   |  (   |  )   | PrtSc|  %   |  <   |  >   |   *  |      | Enter|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |  #   |  @   |  {   |  }   |      |      |  &   |  |   |   !  |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_ortho_4x12_1x2uC(
         KC_NO, KC_SLSH, KC_BSLS, KC_LBRC, KC_RBRC, KC_GRV, KC_CIRC, KC_MINS, KC_UNDS, KC_TILD, KC_DEL, KC_BSPC,
-        KC_CAPS, KC_EQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_PERC, KC_LT, KC_GT, KC_ASTR, KC_NO, KC_NO,
+        KC_CAPS, KC_EQL, KC_DLR, KC_LPRN, KC_RPRN, KC_PSCR, KC_PERC, KC_LT, KC_GT, KC_ASTR, KC_NO, KC_ENT,
         KC_NO, KC_HASH, KC_AT, KC_LCBR, KC_RCBR, KC_NO, KC_NO, KC_AMPR, KC_PIPE, KC_EXLM, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
 
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * |      |      |  F3  |  F4  | F9   |   .  |   +  |  1   |  2   |  3   |  -   | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |  F2  |  F5  | F12  |   ,  |   :  |  4   |  5   |  6   |  * | Enter|
+     * |      |      |  F2  |  F5  | F12  |   ,  |   :  |  4   |  5   |  6   |  *   | Enter|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |  F1  |  F11 |      |      |   /  |  7   |  8   |  9   |  =   | Del  |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -117,9 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
     /* Layer 5: Direccion
      * ,-----------------------------------------------------------------------------------.
-     * |      |      |PgUp  | Home |      |      |PgDn  | End  | Top  |      |      |      |
+     * |      |      |PgUp  | Home |      |      |PgDn  | End  | Top  |      |      | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |Shift | Ctrl |  F   |      |      | Left | Down |Right |      |      |
+     * |      |      |Shift | Ctrl |  F   |      |      | Left | Down |Right |      |Enter |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      |      |      |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -127,77 +127,98 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------'
      */
     [5] = LAYOUT_ortho_4x12_1x2uC(
-        KC_NO, KC_NO, KC_PGUP, KC_HOME, KC_NO, KC_NO, KC_PGDN, KC_END, KC_UP, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_NO, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_PGUP, KC_HOME, KC_NO, KC_NO, KC_PGDN, KC_END, KC_UP, KC_NO, KC_NO, KC_BSPC,
+        KC_NO, KC_NO, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_ENT,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO),
 };
 /* --- Acentos --- */
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!record->event.pressed) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    if (!record->event.pressed)
+    {
         return true;
     }
 
-    switch (keycode) {
-        case A_ACUTE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // Á (U+00C1)
-                send_unicode(0x00C1);
-            } else {
-                // á (U+00E1)
-                send_unicode(0x00E1);
-            }
-            return false;
-        
-        case E_ACUTE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // É (U+00C9)
-                send_unicode(0x00C9);
-            } else {
-                // é (U+00E9)
-                send_unicode(0x00E9);
-            }
-            return false;
-        
-        case I_ACUTE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // Í (U+00CD)
-                send_unicode(0x00CD);
-            } else {
-                // í (U+00ED)
-                send_unicode(0x00ED);
-            }
-            return false;
-        
-        case O_ACUTE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // Ó (U+00D3)
-                send_unicode(0x00D3);
-            } else {
-                // ó (U+00F3)
-                send_unicode(0x00F3);
-            }
-            return false;
-        
-        case U_ACUTE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // Ú (U+00DA)
-                send_unicode(0x00DA);
-            } else {
-                // ú (U+00FA)
-                send_unicode(0x00FA);
-            }
-            return false;
-        
-        case N_TILDE:
-            if (get_mods() & MOD_MASK_SHIFT) {
-                // Ñ (U+00D1)
-                send_unicode(0x00D1);
-            } else {
-                // ñ (U+00F1)
-                send_unicode(0x00F1);
-            }
-            return false;
+    switch (keycode)
+    {
+    case A_ACUTE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // Á (U+00C1)
+            send_nibble(0x00C1);
+        }
+        else
+        {
+            // á (U+00E1)
+            send_nibble(0x00E1);
+        }
+        return false;
+
+    case E_ACUTE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // É (U+00C9)
+            send_nibble(0x00C9);
+        }
+        else
+        {
+            // é (U+00E9)
+            send_nibble(0x00E9);
+        }
+        return false;
+
+    case I_ACUTE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // Í (U+00CD)
+            send_nibble(0x00CD);
+        }
+        else
+        {
+            // í (U+00ED)
+            send_nibble(0x00ED);
+        }
+        return false;
+
+    case O_ACUTE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // Ó (U+00D3)
+            send_nibble(0x00D3);
+        }
+        else
+        {
+            // ó (U+00F3)
+            send_nibble(0x00F3);
+        }
+        return false;
+
+    case U_ACUTE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // Ú (U+00DA)
+            send_nibble(0x00DA);
+        }
+        else
+        {
+            // ú (U+00FA)
+            send_nibble(0x00FA);
+        }
+        return false;
+
+    case N_TILDE:
+        if (get_mods() & MOD_MASK_SHIFT)
+        {
+            // Ñ (U+00D1)
+            send_nibble(0x00D1);
+        }
+        else
+        {
+            // ñ (U+00F1)
+            send_nibble(0x00F1);
+        }
+        return false;
     }
 
     return true;
