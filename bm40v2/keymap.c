@@ -35,18 +35,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * | Esc  |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   |  "   |
+     * | Tab  |  A   |  S   |  D   |  F   |  G   |  H   |  J   |  K   |  L   |  ;   |Enter |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   | Top  |  /   |
+     * |Shift |  Z   |  X   |  C   |  V   |  B   |  N   |  M   |  ,   |  .   |  /  |   "   |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  |Left  | Down |Rigth |
+     * | Ctrl | Menu | GUI  |  Alt |Lower |    Space    |Raise | Del  |Shift |Home |  End  |
      * `-----------------------------------------------------------------------------------'
      */
     [0] = LAYOUT_ortho_4x12_1x2uC(
         KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-        ACENTOS, KC_A, KC_S, KC_D, LT(5, KC_F), KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_UP, KC_SLSH,
-        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, LT(2, KC_ENT), KC_DEL, KC_LEFT, KC_DOWN, KC_RGHT),
+        ACENTOS, KC_A, KC_S, KC_D, LT(5, KC_F), KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_ENT,
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,
+        KC_LCTL, KC_APP, KC_LGUI, KC_LALT, TL_LOWR, KC_SPC, TL_UPPR, KC_DEL, KC_LSFT, KC_HOME, KC_END),
 
     /* Layer 1: LOWER (símbolos)
      * ,-----------------------------------------------------------------------------------.
