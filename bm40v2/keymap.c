@@ -6,19 +6,22 @@ enum custom_layers {
     _LOWER,
     _RAISE,
     _ADJUST,
-    _DIRECTION // Añadida al enum para que coincida con tus definiciones
+    _DIRECTION
 };
 
 /* Custom Keycodes para tus Smart Keys */
 enum custom_keycodes {
     S_BRC = SAFE_RANGE, // []
     S_PAR,              // ()
-    S_CUR               // {}
+    S_CUR,               // {}
+    M_ASIG,             // Macro para =>
+    M_ARRO              // Macro para ->
 };
 
 /* Aliases para las capas */
 #define TL_LOWR MO(_LOWER)
 #define TL_UPPR MO(_RAISE)
+#define VS_JOIN LCTL(KC_LSFT) // Para el atajo de VS Code: Ctrl + Shift
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -40,21 +43,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_APP,  KC_LGUI, KC_LALT, TL_LOWR, KC_SPC,  TL_UPPR, KC_DEL,  KC_LSFT, KC_HOME, KC_END
     ),
 
-    /* Layer 1: LOWER (símbolos inteligentes)
+/* Layer 1: LOWER (Símbolos + Macros Laravel + VS Code)
      * ,-----------------------------------------------------------------------------------.
-     * |      |  /   |   \  |  []  |  ]   |   `  |   ^  |   -  |  _   |   ~  | Del  | Bksp |
+     * |      |  /   |   \  |  []  |  =>  |   `  |   ^  |   -  |  _   |   ~  | Del  | Bksp |
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |Caps  |  =   |  $   |  ()  |  )   | PrtSc|  %   |  <   |  >   |   * |      | Enter|
+     * |Caps  |  =   |  $   |  ()  |  ->  | PrtSc|  %   |  <   |  >   |   * |      | Enter|
      * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |  #   |  @   |  {}  |  }   |      |      |  &   |  |   |   !  |      |      |
-     * |------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      |Lower |   Space     |Raise |      |      |      |      |
+     * |      |  #   |  @   |  {}  | C+S  |      |      |  &   |  |   |   !  |      |      |
      * `-----------------------------------------------------------------------------------'
      */
     [_LOWER] = LAYOUT_ortho_4x12_1x2uC(
-        KC_NO,   KC_SLSH, KC_BSLS, S_BRC,   KC_RBRC, KC_GRV,  KC_CIRC, KC_MINS, KC_UNDS, KC_TILD, KC_DEL,  KC_BSPC,
-        KC_CAPS, KC_EQL,  KC_DLR,  S_PAR,   KC_RPRN, KC_PSCR, KC_PERC, KC_LT,   KC_GT,   KC_ASTR, KC_NO,   KC_ENT,
-        KC_NO,   KC_HASH, KC_AT,   S_CUR,   KC_RCBR, KC_NO,   KC_NO,   KC_AMPR, KC_PIPE, KC_EXLM, KC_NO,   KC_NO,
+        KC_NO,   KC_SLSH, KC_BSLS, S_BRC,   M_ASIG,  KC_GRV,  KC_CIRC, KC_MINS, KC_UNDS, KC_TILD, KC_DEL,  KC_BSPC,
+        KC_CAPS, KC_EQL,  KC_DLR,  S_PAR,   M_ARRO,  KC_PSCR, KC_PERC, KC_LT,   KC_GT,   KC_ASTR, KC_NO,   KC_ENT,
+        KC_NO,   KC_HASH, KC_AT,   S_CUR,   VS_JOIN, KC_NO,   KC_NO,   KC_AMPR, KC_PIPE, KC_EXLM, KC_NO,   KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO
     ),
 
@@ -130,6 +131,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case S_CUR:
                 SEND_STRING("{}" SS_TAP(X_LEFT));
+                return false;
+            case M_ASIG:
+                SEND_STRING("=> "); // Espacio opcional al final para limpieza
+                return false;
+            case M_ARRO:
+                SEND_STRING("->");
                 return false;
         }
     }
