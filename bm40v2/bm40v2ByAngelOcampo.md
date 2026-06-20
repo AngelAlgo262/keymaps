@@ -30,9 +30,12 @@ Para optimizar el desarrollo en **Laravel** y **Vue**, se han programado comport
 ## 3. Mapas de Teclas (Layouts)
 
 ### Capa 0: QWERTY (Principal)
-```text
+
+| | | | | | | | | | | |
 |---|---|---|---|---|---|---|---|---|---|---|
 | `Esc` | Q | W | E | R | T | Y | U | I | O | P | `Bksp` |
 | `Tab` | A | S | D | F | G | H | J | K | L | `;` | `Enter` |
 | `Shift` | Z | X | C | V | B | N | M | `,` | `.` | `/` | `"` |
 | `Ctrl` | Menu | GUI | `Alt` | **Lower** | `Space` | `Space` | **Raise** | `Del` | `Shift` | `Home` | `End` |
+
+---
