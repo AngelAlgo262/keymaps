@@ -39,3 +39,13 @@ Para optimizar el desarrollo en **Laravel** y **Vue**, se han programado comport
 | `Ctrl` | Menu | GUI | `Alt` | **Lower** | `Space` | `Space` | **Raise** | `Del` | `Shift` | `Home` | `End` |
 
 ---
+
+## Capa 1: LOWER · Símbolos *(mantener Lower)*
+
+| | | | | | | | | | | |
+|---|---|---|---|---|---|---|---|---|---|---|
+| | `/` | `\` | `[]` | `=>` | `` ` `` | `^` | `-` | `_` | `~` | `Del` | `Bksp` |
+| `Caps` | | `$` | `()` | `->` | `PtrSc` | `%` | `<` | `>` | `*` | | `Enter` |
+| | `#` | `@` | `{}` | | **Lower** | `Space` | **Raise** | | `&` | `\|` | `!` |
+
+---
